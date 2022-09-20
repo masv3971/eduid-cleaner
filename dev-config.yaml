@@ -1,0 +1,38 @@
+---
+eduid:
+  worker:
+    common:
+      debug: yes
+    ladok-x:
+      api_server:
+        host: :8080
+    cleaner:
+      api_server:
+        host: :8080
+      production: false
+      http_proxy: "some-proxy.se"
+      workers:
+        skv:
+          periodicity: 10
+          sub_worker_amount: 5
+        ladok:
+          periodicity: 10
+          sub_worker_amount: 5
+      storage:
+        redis:
+          db: 3
+          host: localhost:6379
+          sentinel_hosts:
+          #  - localhost:1231
+          #  - localhost:12313
+          sentinel_service_name: redis-cluster
+      sunet:
+        auth:
+          url: https://auth-test.sunet.se
+        am_api:
+          url: https://example.com
+    x_service:
+      api_server:
+        host: 8080
+
+        # Config.EduID.Worker.Cleaner.Sunet.AmAPI.URL
